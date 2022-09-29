@@ -2,21 +2,20 @@ package com.example.springbootapp.model;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Hello")
+@Table(name = "HELLO")
+@ToString
 @NoArgsConstructor
 public class Hello {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column
     private String leanguage;
-    @Column
     private String helloWorld;
 
     public Integer getId() {
@@ -42,5 +41,6 @@ public class Hello {
     public void setHelloWorld(String helloWorld) {
         this.helloWorld = helloWorld;
     }
+
 
 }

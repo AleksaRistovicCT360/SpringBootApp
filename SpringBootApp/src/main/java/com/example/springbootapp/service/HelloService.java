@@ -25,8 +25,8 @@ public class HelloService {
         return hellos;
     }
 
-    public Hello getHelloById(int id) {
-        return helloRepository.findById(id).get();
+    public Hello getHelloByLeanguage(String leanguage) {
+        return helloRepository.findByLeanguage(leanguage).get();
     }
 
     public void saveOrUpdate(Hello hello) {

@@ -1,7 +1,9 @@
 package com.example.springbootapp.controller;
 
 import com.example.springbootapp.Greeting;
+import com.example.springbootapp.appuser.AppUser;
 import com.example.springbootapp.model.Hello;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @RestController
 public class HelloController {
 
+
     @Autowired
     HelloService helloService;
 
@@ -22,19 +25,19 @@ public class HelloController {
         return helloService.getAllHello();
     }
 
-    @GetMapping("/hello/{id}")
-    private Hello getEmployeeById(@PathVariable("id") int id) {
-        return helloService.getHelloById(id);
+    @GetMapping("/hello/{leanguage}")
+    private Hello getEmployeeById(@PathVariable("leanguage") String leanguage) {
+        return helloService.getHelloByLeanguage(leanguage);
     }
 
     @PostMapping("/hello")
-    private ResponseEntity createEmployee(@RequestBody Hello employee) {
+    private ResponseEntity createNewLeanguage(@RequestBody Hello hello) {
         try {
-            helloService.saveOrUpdate(employee);
+            helloService.saveOrUpdate(hello);
         } catch (Exception exception) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity("New employee created with id: " + employee.getId(), HttpStatus.CREATED);
+        return new ResponseEntity("New Hello World created with id: " + hello.getId(), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/hello/{id}")
@@ -44,7 +47,7 @@ public class HelloController {
         } catch (Exception exception) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity("Employee deleted with id: " + id, HttpStatus.OK);
+        return new ResponseEntity("Hello World deleted with id: " + id, HttpStatus.OK);
     }
 
     private static final String template = "Hello, %s!";

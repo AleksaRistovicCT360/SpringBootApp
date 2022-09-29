@@ -23,7 +23,7 @@ public class RegistrationService {
                 new AppUser(
                         request.getUsername(),
                         request.getPassword(),
-                        AppUserRole.USER
+                        request.getAppUserRole()
                 )
         );
     }
