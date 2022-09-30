@@ -1,14 +1,13 @@
 package com.example.springbootapp.model;
 
-import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "HELLO")
-@ToString
+@EqualsAndHashCode
 @NoArgsConstructor
 public class Hello {
 
